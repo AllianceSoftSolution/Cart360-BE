@@ -20,7 +20,8 @@ export const validate = (schema, source = 'body') => {
     }
 
     if (source === 'query') {
-      req.query = value;
+      // Express 5: req.query is read-only, store validated query on req.validatedQuery
+      req.validatedQuery = value;
     } else {
       req.body = value;
     }

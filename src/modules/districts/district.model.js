@@ -21,6 +21,27 @@ const districtSchema = new mongoose.Schema(
       type: String,
       maxlength: [1000, 'Description cannot exceed 1000 characters'],
     },
+    // ─── Geographic References ──────────────────────
+    academicYearId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'AcademicYear',
+      default: null,
+    },
+    countryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Country',
+      default: null,
+    },
+    stateId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'State',
+      default: null,
+    },
+    countyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'County',
+      default: null,
+    },
     address: {
       street: { type: String },
       city: { type: String },

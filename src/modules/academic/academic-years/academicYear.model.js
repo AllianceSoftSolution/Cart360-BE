@@ -12,7 +12,7 @@ const academicYearSchema = new mongoose.Schema(
     districtId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'District',
-      required: true,
+      default: null,
     },
     schoolId: {
       type: mongoose.Schema.Types.ObjectId,

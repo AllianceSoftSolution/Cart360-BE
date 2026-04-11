@@ -25,7 +25,7 @@ class TeacherController {
         delete scope.schoolId;
       }
 
-      const result = await teacherService.getAllTeachers(req.query, scope);
+      const result = await teacherService.getAllTeachers(req.validatedQuery || req.query, scope);
       return sendSuccess(res, 200, 'Teachers fetched successfully', result);
     } catch (error) {
       next(error);
@@ -173,7 +173,7 @@ class TeacherController {
   async getBySchool(req, res, next) {
     try {
       const teachers = await teacherService.getTeachersBySchool(
-        req.params.schoolId, req.query
+        req.params.schoolId, req.validatedQuery || req.query
       );
       return sendSuccess(res, 200, 'Teachers fetched successfully', teachers);
     } catch (error) {

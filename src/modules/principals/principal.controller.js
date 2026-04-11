@@ -27,7 +27,7 @@ class PrincipalController {
         delete scope.schoolId;
       }
 
-      const result = await principalService.getAllPrincipals(req.query, scope);
+      const result = await principalService.getAllPrincipals(req.validatedQuery || req.query, scope);
       return sendSuccess(res, 200, 'Principals fetched successfully', result);
     } catch (error) {
       next(error);

@@ -26,7 +26,7 @@ class StudentController {
         delete scope.schoolId;
       }
 
-      const result = await studentService.getAllStudents(req.query, scope);
+      const result = await studentService.getAllStudents(req.validatedQuery || req.query, scope);
       return sendSuccess(res, 200, 'Students fetched successfully', result);
     } catch (error) {
       next(error);
